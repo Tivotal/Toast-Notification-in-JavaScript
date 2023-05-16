@@ -1,0 +1,171 @@
+/* Created by Tivotal */
+
+/* Google Fonts(Poppins) */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark: #34495e;
+  --light: #ffffff;
+  --success: #0abf30;
+  --info: #3498db;
+  --warning: #e9bd0c;
+  --error: #e24d4c;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark);
+}
+
+.toast-list {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+}
+
+.toast-list .toast {
+  list-style: none;
+  width: 400px;
+  background: var(--light);
+  padding: 16px 17px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  animation: show 0.3s ease forwards;
+}
+
+@keyframes show {
+  0% {
+    transform: translateX(100%);
+  }
+
+  40% {
+    transform: translateX(-5%);
+  }
+
+  80% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+.toast-list .toast.hide {
+  animation: hide 0.3s ease forwards;
+}
+
+@keyframes hide {
+  0% {
+    transform: translateX(-10px);
+  }
+
+  40% {
+    transform: translateX(0%);
+  }
+
+  80% {
+    transform: translateX(-5%);
+  }
+
+  100% {
+    transform: translateX(calc(100% + 20px));
+  }
+}
+
+.toast-list .toast::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: red;
+  bottom: 0;
+  left: 0;
+  animation: load 5s linear forwards;
+}
+
+@keyframes load {
+  100% {
+    width: 0;
+  }
+}
+
+.buttons .btn#success,
+.toast-list .toast.success::before {
+  background: var(--success);
+}
+
+.buttons .btn#info,
+.toast-list .toast.info::before {
+  background: var(--info);
+}
+
+.buttons .btn#warning,
+.toast-list .toast.warning::before {
+  background: var(--warning);
+}
+
+.buttons .btn#error,
+.toast-list .toast.error::before {
+  background: var(--error);
+}
+
+.toast-list .toast .column {
+  display: flex;
+  align-items: center;
+}
+
+.toast-list .toast .column i {
+  font-size: 1.75rem;
+}
+
+.toast-list .toast.success .column i {
+  color: var(--success);
+}
+
+.toast-list .toast.info .column i {
+  color: var(--info);
+}
+.toast-list .toast.warning .column i {
+  color: var(--warning);
+}
+.toast-list .toast.error .column i {
+  color: var(--error);
+}
+
+.toast-list .toast .column span {
+  font-size: 1.05rem;
+  margin-left: 12px;
+}
+
+.toast-list .toast i:last-child {
+  cursor: pointer;
+  color: #aeb0d7;
+}
+
+.buttons .btn {
+  outline: none;
+  border: none;
+  background-color: red;
+  color: var(--light);
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 1.2rem;
+}
